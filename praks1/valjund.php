@@ -19,5 +19,18 @@ define('NUMBER_PI', 3.14);  // define, constant
 
 echo 'Olen '.$eesnimi.' '.$perenimi.'<br>';
 echo 'Olen '.$vanus.'<br>';
-echo 'Oskan komaarve nagu näiteks'.$komaarv.'<br>';
-echo 'Pi =' .NUMBER_PI. '<br>';
+echo 'Oskan komaarve nagu näiteks '.$komaarv.'<br>';
+echo 'Pi = ' .NUMBER_PI. '<br>';
+
+//tingimuslaused
+$ilmväljas = 'sajab lund';
+if($ilmväljas == 'sajab lund') {
+    echo $ilmväljas.', Tuleb minna sauna <br>';
+} else {
+    echo $ilmväljas.', ära mine sauna <br>';
+}
+
+// ? operaator -ternary operaator
+$ilmväljas == 'ei saja';
+echo ($ilmväljas =='sajab lund') ? 'Tuleb minna sauna <br>'
+    : 'Pole mõtet sauna minna<br>';
