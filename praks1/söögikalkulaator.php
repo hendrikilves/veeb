@@ -33,14 +33,26 @@ function soogiHind ($taisHind, $soodusKaart, $kasOledOpilane) {
 // testimiseks paneme erinevad väärtused paika
 // kasutame selleks array kujul (sooduskaart, kasOledOpilane)
 
-$opilane = array(true, true); // olemas soodus - $opilane[0] ja oled õpilane - $opilane[1]
-$opetaja = array(true, false); // olemas sooduskaart kuid ei ole õpilane
-$kulaline = array(false, false); // ei ole sooduskaarti ega pole ka õpilane
+// kasutajad on tabel (array) , kus
+// esimesel real on õpilase andmed
+// teisel real on õpetaja andmed
+// kolmandal real on külaliste andmed
+$kasutajad = array (
+  array(true, true),
+  array(true, false),
+  array(false, false)
+);
 
-
+//vaatame $kasutajad masiivi läbi
+// for tsükli juhtmis muutjua (tjm) defineerimine; tij kehtivuse kontroll, tjm suurendamine/vähendamine
+for($i = 0; $i < count($kasutajad); $i++)
+{
+    $soogiHind = soogihind( 2.65, $kasutajad[$i][0], $kasutajad[$i][1]);
+    echo 'Prae hind = '.round($soogiHind, 2).' €<br />';
+}
 // eelnevalt defineeritud funktsiooni kutsumine
 
-// kui oled õpilane ning sul on sooduskaart
+/** kui oled õpilane ning sul on sooduskaart
 echo 'Hind õpilasele: '.round(soogiHind($soogiHind, $opilane[0], $opilane[1]), 2).' € <br />';
 
 // kui oled õpetaja ning sul on sooduskaart
@@ -48,3 +60,4 @@ echo 'Hind õpetajale: '.round(soogiHind($soogiHind, $opetaja[0], $opetaja[1]),2
 
 // kui oled külastaja ilma sooduskaardita
 echo 'Hind külastajale: '.round(soogiHind($soogiHind, $kulaline[0], $kulaline[1]), 2).' € <br />';
+ */
