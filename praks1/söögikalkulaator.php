@@ -27,6 +27,9 @@ function soogiHind ($taisHind, $soodusKaart, $kasOledOpilane) {
     if ($kasOledOpilane) {
         $soodusHind -= $toetus;
     }
+    if ($soodusHind < 0) {
+        $soodusHind = 0;
+    }
     return $soodusHind;
 } // funktsiooni lõpp
 
@@ -38,26 +41,70 @@ function soogiHind ($taisHind, $soodusKaart, $kasOledOpilane) {
 // teisel real on õpetaja andmed
 // kolmandal real on külaliste andmed
 $kasutajad = array (
-  array(true, true),
-  array(true, false),
-  array(false, false)
+  array(
+      'roll' => 'õpilasele',
+      'soodus' => true,
+      'opilaskaart' => true,
+  ),
+  array(
+      'roll' => 'õpetajale',
+      'soodus' => true,
+      'opilaskaart' => false,
+  ),
+  array(
+      'roll' => 'külalisele',
+      'soodus' => false,
+      'opilaskaart' => false
+  )
 );
+
+$soogid = array(
+    array (
+        'nimetus' => 'Šnitsel',
+        'kirjeldus' => 'šnitsel sealihast, lisand, kaste, salat, leib',
+        'hind' => 2.68
+    ),
+    array (
+        'nimetus' => 'Seapraad',
+        'kirjeldus' => 'seapraad, lisand, kaste, salat, leib',
+        'hind' => 2.65
+    ),
+    array (
+        'nimetus' => 'Hakklihapallid tomatikastmes',
+        'kirjeldus' => 'hakklihapall 2 tk, lisand, kaste, salat, leib',
+        'hind' => 2.30
+    ),
+    array (
+        'nimetus' => 'Hakklihapallid tomatikastmes 1/2',
+        'kirjeldus' => 'hakklihapall, lisand, kaste, salat, leib',
+        'hind' => 1.30
+    ),
+    array (
+        'nimetus' => 'Kartul kastmega',
+        'kirjeldus' => 'Kartul , kaste , salat, leib',
+        'hind' => 1.28
+    ),
+
+);
+
+foreach ($soogid as $sook) {
+    echo $sook['nimetus'].': ';
+    echo $sook['kirjeldus'].' <br /><br />';
+    foreach ($kasutajad as $kasutaja) {
+        $soogiHind = soogiHind ( $sook['hind'], $kasutaja['soodus'], $kasutaja['opilaskaart']);
+        echo 'Prae hind '.$kasutaja['roll'].' = '.round($soogiHind, 2). ' €<br />';
+
+        echo '---------------<br />';
+    }
+}
+
 
 //vaatame $kasutajad masiivi läbi
 // for tsükli juhtmis muutjua (tjm) defineerimine; tij kehtivuse kontroll, tjm suurendamine/vähendamine
+/**
 for($i = 0; $i < count($kasutajad); $i++)
 {
     $soogiHind = soogihind( 2.65, $kasutajad[$i][0], $kasutajad[$i][1]);
     echo 'Prae hind = '.round($soogiHind, 2).' €<br />';
 }
-// eelnevalt defineeritud funktsiooni kutsumine
-
-/** kui oled õpilane ning sul on sooduskaart
-echo 'Hind õpilasele: '.round(soogiHind($soogiHind, $opilane[0], $opilane[1]), 2).' € <br />';
-
-// kui oled õpetaja ning sul on sooduskaart
-echo 'Hind õpetajale: '.round(soogiHind($soogiHind, $opetaja[0], $opetaja[1]),2).' € <br />';
-
-// kui oled külastaja ilma sooduskaardita
-echo 'Hind külastajale: '.round(soogiHind($soogiHind, $kulaline[0], $kulaline[1]), 2).' € <br />';
  */
