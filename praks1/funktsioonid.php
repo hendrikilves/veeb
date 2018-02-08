@@ -28,3 +28,25 @@ function soogiHind ($taisHind, $soodusKaart, $kasOledOpilane) {
     }
     return $soodusHind;
 } // funktsiooni lõpp
+
+//vormi väljastamise funktsioon
+// vormi hoiame vorm.html failis
+//vormi sisu loeme antud failist ja väljastame
+
+function loeVormFailist($failinimi) {
+    // siia salvestame sisu
+    $sisu = '';
+    // kontrollime vajaliku faili olemasolu
+    if(file_exists($failinimi) and is_file($failinimi) and is_readable($failinimi)) {
+        // fail on olemas ja sealt saab lugeda
+        $fp = fopen($failinimi,'r');
+        // loeme failist täissisu
+        $sisu = fread($fp, filesize($failinimi));
+        fclose($fp); //sulgeme ühenduse failiga
+
+    } else {
+        echo 'probleem '.$failinimi. 'failiga<br />';
+        exit;
+    }
+    echo $sisu;
+}

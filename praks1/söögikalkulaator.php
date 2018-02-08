@@ -6,8 +6,9 @@
  * Time: 11:01
  */
 require_once 'funktsioonid.php'; // ligipääs teisele funktsioonide failidele
-// Seadistame vajalikud muutujad
-$soogiHind = 2.65; // söögi hind eurodes
+
+LoeVormFailist ('vorm.html');
+
 
 // funktisoon soodustuse arvutamiseks
 /**
