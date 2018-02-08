@@ -5,7 +5,7 @@
  * Date: 08.02.2018
  * Time: 11:01
  */
-
+require_once 'funktsioonid.php'; // ligipääs teisele funktsioonide failidele
 // Seadistame vajalikud muutujad
 $soogiHind = 2.65; // söögi hind eurodes
 
@@ -15,23 +15,7 @@ $soogiHind = 2.65; // söögi hind eurodes
  * @param $soodusKaart
  * @param $kasOledOpilane
  */
-function soogiHind ($taisHind, $soodusKaart, $kasOledOpilane) {
-    // funktsiooni sisu
-    $toetus = 1.80; // õpilase toetus eurodes
-    $soodustusProtsent = 15; // soodustusprotsent
-    $soodusHind = $taisHind;
 
-    if ($soodusKaart) {
-        $soodusHind = $taisHind - ($taisHind * ($soodustusProtsent / 100));
-    }
-    if ($kasOledOpilane) {
-        $soodusHind -= $toetus;
-    }
-    if ($soodusHind < 0) {
-        $soodusHind = 0;
-    }
-    return $soodusHind;
-} // funktsiooni lõpp
 
 // testimiseks paneme erinevad väärtused paika
 // kasutame selleks array kujul (sooduskaart, kasOledOpilane)
