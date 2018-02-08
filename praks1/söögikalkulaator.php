@@ -30,13 +30,21 @@ function soogiHind ($taisHind, $soodusKaart, $kasOledOpilane) {
     return $soodusHind;
 } // funktsiooni lõpp
 
+// testimiseks paneme erinevad väärtused paika
+// kasutame selleks array kujul (sooduskaart, kasOledOpilane)
+
+$opilane = array(true, true); // olemas soodus - $opilane[0] ja oled õpilane - $opilane[1]
+$opetaja = array(true, false); // olemas sooduskaart kuid ei ole õpilane
+$kulaline = array(false, false); // ei ole sooduskaarti ega pole ka õpilane
+
+
 // eelnevalt defineeritud funktsiooni kutsumine
 
 // kui oled õpilane ning sul on sooduskaart
-echo 'Hind õpilasele: '.round(soogiHind($soogiHind, true, true), 2).' € <br />';
+echo 'Hind õpilasele: '.round(soogiHind($soogiHind, $opilane[0], $opilane[1]), 2).' € <br />';
 
 // kui oled õpetaja ning sul on sooduskaart
-echo 'Hind Õpetajale: '.round(soogiHind($soogiHind, true, false),2).' € <br />';
+echo 'Hind õpetajale: '.round(soogiHind($soogiHind, $opetaja[0], $opetaja[1]),2).' € <br />';
 
 // kui oled külastaja ilma sooduskaardita
-echo 'Hind külastajale: '.round(soogiHind($soogiHind, false, false), 2).' € <br />';
+echo 'Hind külastajale: '.round(soogiHind($soogiHind, $kulaline[0], $kulaline[1]), 2).' € <br />';
