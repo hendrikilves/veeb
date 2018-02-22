@@ -20,6 +20,9 @@ if (!empty($pakutudnumber)) {
         case $suvalinenumber:
             echo "Õige! Hurraa!";
             break;
+        case ($pakutudnumber >= $suvalinenumber - 5 and $pakutudnumber < $suvalinenumber or $pakutudnumber <= $suvalinenumber + 5 and $pakutudnumber > $suvalinenumber);
+            echo "Aii napikas";
+            break;
         case ($pakutudnumber > $suvalinenumber):
             echo "Pakkusid liiga palju :(";
             break;
